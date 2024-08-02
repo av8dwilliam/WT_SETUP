@@ -1,0 +1,537 @@
+//******************************************************************************
+//                          WT-Tester Setup file
+//******************************************************************************
+	
+
+WT_IP_ADDRESS   		= 192.168.10.254   	// 測試儀IP
+
+WT_TESTER_CONNECT_MODE		= 1		  	// 測試儀連接模式
+							// 1:正常模式，連接時將搶占測試儀(默認值)
+							// 2:隊列模式，待測試儀空閑時連接(用于乒乓測試，WT-208無效)
+							
+WT_DUT_PARALLEL_NUM		= 1			// 測試DUT個數，取值范圍(1-8),默認值為1
+							
+WT_DUT_START_NUM		= 1			// 起始RF端口，取值范圍(1-8),默認值為1
+
+WT_IS_LONG_CONNECTION		= 0                     // 是否長連接模式
+                                                        // 0：短連接(默認值)
+                                                        // 1：長連接
+
+WT_CONNECT_TESTER_RETRY		= 3			// 儀器連接重試次數，取值范圍(1-100)
+WT_CONNECT_DUT_RETRY		= 3			// DUT連接重試次數，取值范圍(1-100)
+WT_CALIBRATION_RETRY		= 15			// 校準時，寄存器調整次數上限,取值范圍(1-100)
+WT_TX_VERIFY_RETRY		= 3			// TxVerify重試次數上限，取值范圍(1-100)
+WT_RX_VERIFY_RETRY		= 3			// RxVerify測試重試次數上限，取值范圍(1-100)
+
+WT_PRINT_RETRY_PROCESS		= 0			// 是否打印重試過程
+							// 0:隱藏重試過程，只打印最后一次測試結果(默認值)
+							// 1:打印每次重試的結果
+
+WT_RUN_ALL_TEST_FLOW		= 1			// 進行TxVerify、RxVerify測試時，遇到Fail時是否停止
+							// 0:停止(默認值)
+							// 1:繼續運行
+
+WT_POWER_CAL_OPTIMIZE_2G        = 0        		// 2.4G 功率校準優化選項
+WT_POWER_CAL_OPTIMIZE_5G        = 0			// 5G 	功率校準優化選項
+WT_POWER_CAL_OPTIMIZE_6G        = 0	                // 6G 	功率校準優化選項
+							// 0：不優化(默認值)
+                               			        // 1：準確模式（對于步進為±0.5的DUT，盡可能的調整到±0.3dB的范圍）    
+                                			// 2：如果EVM較差（超標或余量不足1dB），則在允許范圍內降低功率
+                                			// 3：如果EVM余量充足（余量超過3dB），則在允許范圍內提升功率
+                                			// 4：不管EVM如何，在允許范圍內降低功率
+                                			// 5：不管EVM如何，在允許范圍內提升功率
+                                			// 6：第2、3項同時生效
+
+WT_TX_VERIFY_WHEN_POWER_CAL       = 0                   // 當功率校準時是否進行TxVerify測試
+						 	// 0:否
+							// 1:是
+
+WT_RX_SWEEP_JUDGE_LAST_PASS_POW   = 0          		// RX掃描時，是否判斷第一個FAIL功率點前的PASS功率點，如果該PASS功率點大于
+							// 對應RxVerify配置的標準發送功率,則掃描結果為FAIL(僅對靈敏度掃描有效)
+							// 0:否
+							// 1:是	
+
+WT_RX_SWEEP_RUN_ALL_POW    	  = 1          		// RX掃描時，掃描過程中出現失敗，是否繼續往下掃
+							// 0:否
+							// 1:是
+
+WT_CALIBRATION_BT_RETRY     	  = 15			// 藍牙校準時，寄存器調整次數上限,取值范圍(1-100)
+							
+WT_BT_TX_VERIFY_MODE   		  = 1			// BT TX Verify時發多少種payload來解析信號參數
+							// 0: 發兩種payload
+							// 1: 發三種payload
+
+WT_BT_RX_COMPENSATE_DISENABLE     = 0			// 是否關閉BT RX算法補償(WT208/WT208C生效)
+							// 0:不關閉算法補償
+							// 1:關閉算法補償
+
+WT_ZIGBEE_RX_COMPENSATE_DISENABLE = 0			// 是否關閉ZIGBEE RX算法補償(WT208/WT208C生效)
+							// 0:不關閉算法補償
+							// 1:關閉算法補償
+
+WT_SET_WAVE_CALDATA_COMPENSATE    = 1			//是否打開RX補償(WT3XX,WT4XX生效)
+							// 0:不打開
+							// 1:打開	
+
+WT_POW_CAL_SET_FFT_ANALYZE       = 0                    //功率校準是否使用FFT模式解析(WT3XX,WT4XX生效)  	
+							// 0:不使用
+							// 1:使用
+
+WT_IS_PRINT_POWINFO_AT_END      = 0                     //高通功率校準的功率數據在校準完后再打印
+							// 0:否
+							// 1:是
+				
+//------------------------------------------------------------------------------
+// Calibration,TxVerify,RxVerify時，Tester延時進行DataCapture，ms，取值范圍(0-10000),默認值為0
+//------------------------------------------------------------------------------
+//				OFDM	11B	HT-20	HT-40	AC-20	AC-40   AC-80   SLE	BT	ZIGBEE	 
+WT_FREQ_CAL_DELAY_MS_2_4G	0	0	0	0	0	0	0	 0	0	 0	 	
+WT_POW_CAL_DELAY_MS_2_4G	0	0	0	0	0	0	0	 0	0	 0       
+WT_TX_VERIFY_DELAY_MS_2_4G	200	200	200	200	200	200	200	 0	0	 0       
+WT_RX_VERIFY_DELAY_MS_2_4G	0	0	0	0	0	0	0	 0	0	 0       
+
+//				AX20	AX40	AX80	AX160	AX8080	
+WT_FREQ_CAL_DELAY_MS_AX_2_4G	0	0	0	0	0			
+WT_POW_CAL_DELAY_MS_AX_2_4G	0	0	0	0	0
+WT_TX_VERIFY_DELAY_MS_AX_2_4G	200	200	200	200	200
+WT_RX_VERIFY_DELAY_MS_AX_2_4G	0	0	0	0	0
+
+//				BE20	BE40	BE80	BE160	BE320	BE8080	BE160160	
+WT_FREQ_CAL_DELAY_MS_BE_2_4G	0	0	0	0	0	0	0
+WT_POW_CAL_DELAY_MS_BE_2_4G	0	0	0	0	0	0	0
+WT_TX_VERIFY_DELAY_MS_BE_2_4G	200	200	200	200	200	200	200
+WT_RX_VERIFY_DELAY_MS_BE_2_4G	0	0	0	0	0	0	0
+
+				OFDM	11B	HT-20	HT-40	AC-20	AC-40	AC-80	AC-160   AC-80-80
+WT_FREQ_CAL_DELAY_MS_5G		0	0	0	0	0	0	0	0	 0
+WT_POW_CAL_DELAY_MS_5G		0	0	0	0	0	0	0       0        0
+WT_TX_VERIFY_DELAY_MS_5G	200	200	200	200	200	200	200     200      0
+WT_RX_VERIFY_DELAY_MS_5G	0	0	0	0	0	0	0       0        0
+
+//				AX20	AX40	AX80	AX160	AX8080	
+WT_FREQ_CAL_DELAY_MS_AX_5G	0	0	0	0	0			
+WT_POW_CAL_DELAY_MS_AX_5G	0	0	0	0	0
+WT_TX_VERIFY_DELAY_MS_AX_5G	200	200	200	200	200
+WT_RX_VERIFY_DELAY_MS_AX_5G	0	0	0	0	0
+
+//				BE20	BE40	BE80	BE160	BE320	BE8080	BE160160	
+WT_FREQ_CAL_DELAY_MS_BE_5G	0	0	0	0	0	0	0
+WT_POW_CAL_DELAY_MS_BE_5G	0	0	0	0	0	0	0
+WT_TX_VERIFY_DELAY_MS_BE_5G	200	200	200	200	200	200	200     
+WT_RX_VERIFY_DELAY_MS_BE_5G	0	0	0	0	0	0	0
+
+//				OFDM	11B	HT-20	HT-40	AC-20	AC-40	AC-80	AC-160   AC-80-80
+WT_FREQ_CAL_DELAY_MS_6G		0	0	0	0	0	0	0	0	 0
+WT_POW_CAL_DELAY_MS_6G		0	0	0	0	0	0	0	0	 0
+WT_TX_VERIFY_DELAY_MS_6G	200	200	200	200	200	200	200     200 	 0
+WT_RX_VERIFY_DELAY_MS_6G	0	0	0	0	0	0	0       0        0
+
+//				AX20	AX40	AX80	AX160	AX8080	
+WT_FREQ_CAL_DELAY_MS_AX_6G	0	0	0	0	0			
+WT_POW_CAL_DELAY_MS_AX_6G	0	0	0	0	0
+WT_TX_VERIFY_DELAY_MS_AX_6G	200	200	200	200	200
+WT_RX_VERIFY_DELAY_MS_AX_6G	0	0	0	0	0
+
+//				BE20	BE40	BE80	BE160	BE320	BE8080	BE160160	
+WT_FREQ_CAL_DELAY_MS_BE_6G	0	0	0	0	0	0	0
+WT_POW_CAL_DELAY_MS_BE_6G	0	0	0	0	0	0	0
+WT_TX_VERIFY_DELAY_MS_BE_6G	200	200	200	200	200	200	200
+WT_RX_VERIFY_DELAY_MS_BE_6G	0	0	0	0	0	0	0
+
+// PER測試時Tester發包個數，取值范圍(1-1000000)----------------------------------------------------------------------------------------
+//				 54M	 48M	 36M	 24M	 18M	 12M	 9M	 6M	 11M	 5.5M	 2M	1M
+WT_PER_PACKETS_NUM_LEGACY	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	1000
+                                                                                                                 
+//				 54M	 48M	 36M	 24M	 18M	 12M	 9M	 6M	 11M	 5.5M	 2M	1M
+WT_PER_PACKETS_NUM_5G_11A	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	1000
+
+//				 54M	 48M	 36M	 24M	 18M	 12M	 9M	 6M	 11M	 5.5M	 2M	1M
+WT_PER_PACKETS_NUM_6G_11A	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	1000
+                                                                                                                                
+//				 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0            
+WT_PER_PACKETS_NUM_HT20_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000            
+                                                                                                         
+//				 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0            
+WT_PER_PACKETS_NUM_5G_HT20_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	         
+                                                                                                         
+//				 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0            
+WT_PER_PACKETS_NUM_6G_HT20_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	         
+                                                                                                          
+//				 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0            
+WT_PER_PACKETS_NUM_HT40_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000            
+                                                                                                         
+//				 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0            
+WT_PER_PACKETS_NUM_5G_HT40_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000            
+                                                                                                         
+//				 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0            
+WT_PER_PACKETS_NUM_6G_HT40_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000            
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_2_4G_AC20_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_5G_AC20_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_6G_AC20_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_2_4G_AC40_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_5G_AC40_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_6G_AC40_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_2_4G_AC80_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_5G_AC80_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_6G_AC80_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_2_4G_AC160_1S 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_5G_AC160_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_6G_AC160_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_2_4G_AX20_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+                                                                                                         
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0  
+WT_PER_PACKETS_NUM_5G_AX20_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+                                                                                                         
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0  
+WT_PER_PACKETS_NUM_6G_AX20_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+                                                                                                         
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_2_4G_AX40_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+                                                                                                         
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_5G_AX40_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+                                                                                                         
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_6G_AX40_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+                                                                                                                
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_2_4G_AX80_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+                                                                                                         
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_5G_AX80_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_6G_AX80_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_5G_AX160_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_6G_AX160_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_5G_AX8080_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000
+
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_2_4G_BE20_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_5G_BE20_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_6G_BE20_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+                                                                                                         
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_2_4G_BE40_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+                                                                                                         
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_5G_BE40_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_6G_BE40_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_5G_BE80_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_6G_BE80_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_5G_BE8080_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_6G_BE8080_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_5G_BE160_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_6G_BE160_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_5G_BE320_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_6G_BE320_1S	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_5G_BE160160_1S 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+
+//				 MCS15   MCS14   MCS13   MCS12   MCS11   MCS10   MCS9	 MCS8 	 MCS7  	 MCS6	 MCS5	 MCS4	 MCS3	 MCS2	 MCS1	 MCS0
+WT_PER_PACKETS_NUM_6G_BE160160_1S 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000	 1000    1000    1000	1000	1000	1000	1000
+                                                                         
+//				 BLE	1M	 2M	 3M	 LE2M	LE_125K LE_500K
+WT_PER_PACKETS_NUM_BT            1000	1000	1000	 1000    1000	 1000	1000
+
+WT_PER_PACKETS_NUM_ZIGBEE	 1000
+
+//				 F1	 F2                                   
+WT_PER_PACKETS_NUM_SLE	 	 1000	 1000	 
+
+WT_PER_FRAME_GAP		= 20	//PER測試幀間隔,us,取值范圍(1-1000000)
+WT_BT_BR_PER_FRAME_GAP		= 625	//BT RX測試幀間隔,us,取值范圍(1-1000000)
+WT_BT_EDR_PER_FRAME_GAP		= 625	//BT RX測試幀間隔,us,取值范圍(1-1000000)
+WT_BT_LE_FRAME_GAP		= 0	//BT RX測試幀間隔,us,取值范圍(1-1000000)
+WT_BT_LE2M_FRAME_GAP		= 0	//BT RX測試幀間隔,us,取值范圍(1-1000000)
+WT_BT_LE_125K_FRAME_GAP		= 0	//BT RX測試幀間隔,us,取值范圍(1-1000000)
+WT_BT_LE_500K_FRAME_GAP		= 0	//BT RX測試幀間隔,us,取值范圍(1-1000000)													
+WT_SLE_F1_PER_FRAME_GAP		= 4000	//SLE PER測試幀間隔,us,取值范圍(1-1000000)
+WT_SLE_F2_PER_FRAME_GAP		= 4625	//SLE PER測試幀間隔,us,取值范圍(1-1000000)
+                                              
+//******************************************************************************
+//                          Measurement Settings
+//******************************************************************************
+
+//------------------------------------------------------------------------------
+// Data Capture Parameters 
+//------------------------------------------------------------------------------
+WT_DATA_CAPTURE_MODE		= 1		//采樣模式
+						//0: Free run
+						//1: Trigger(默認值)
+
+WT_DATA_CAPTURE_TIME_QCA_CAL	= 150		//功率校準采用時間
+WT_DATA_CAPTURE_TIME_11B 	= 500		//采樣時間,us，取值范圍(50-10000)，默認值為500						
+WT_DATA_CAPTURE_TIME_11AG 	= 500		//采樣時間,us，取值范圍(50-10000)，默認值為500
+WT_DATA_CAPTURE_TIME_11N 	= 500		//采樣時間,us，取值范圍(50-10000)，默認值為500
+WT_DATA_CAPTURE_TIME_11AC 	= 500		//采樣時間,us，取值范圍(50-10000)，默認值為500
+WT_DATA_CAPTURE_TIME_11AX 	= 500		//采樣時間,us，取值范圍(50-10000)，默認值為500
+WT_DATA_CAPTURE_TIME_11BE 	= 500		//采樣時間,us，取值范圍(50-10000)，默認值為500
+
+WT_DATA_CAPTURE_TIME_BT 	= 500		//采樣時間,us，取值范圍(500-10000)，默認值為500
+WT_DATA_CAPTURE_TIME_BT_LE_2M 	= 500		//采樣時間,us，取值范圍(500-10000)，默認值為500
+WT_DATA_CAPTURE_TIME_BT_LE_125K = 2000		//采樣時間,us，取值范圍(500-10000)，默認值為2000
+WT_DATA_CAPTURE_TIME_BT_LE_500K = 2000		//采樣時間,us，取值范圍(500-10000)，默認值為2000
+WT_DATA_CAPTURE_TIME_ZIGBEE 	= 500		//采樣時間,us，取值范圍(50-10000)，默認值為500
+WT_DATA_CAPTURE_TIME_SLE 	= 2000		//采樣時間,us，取值范圍(50-10000)，默認值為500
+
+WT_DATA_CAPTURE_TIME_CW	  	= 2000		//單載波頻偏校準采樣時間,us，取值范圍(100-10000)，默認值為10000
+
+WT_DATA_CAPTURE_TIME_FFT_POW_CAL= 100           //FFT采樣時間,us，取值范圍(50-10000)，默認值為100
+
+WT_DATA_CAPTURE_AVERAGE_POW_CAL = 1		//功率校準平均次數，分析結果取多次采樣的均值，取值范圍(1-50)，默認值為1
+WT_DATA_CAPTURE_AVERAGE	  	= 1		//TxVerify平均次數，分析結果取多次采樣的均值，取值范圍(1-50)，默認值為1
+
+WT_USE_USER_WAVE_FILE    	= 0		//WT208/WT208C儀器wave文件來源,只對WIFI有效
+						//0: 使用儀器內部wave文件(默認值)
+						//1: 使用外部wave文件
+
+WT_ZIGBEE_ANALYSIS_OPTIMISE     = 0     	//分析優化開關
+                                        	//0:優化關閉(默認值)
+                                        	//1:優化開啟
+
+WT_11N_SPECTRUM_MASK_VERSION    = 1     	//0:Ieee2009
+                                        	//1:Ieee2012
+
+WT_TIMEOUT_WAITTING 		= 10            //在多連接情況下，等待的最大時間，單位sec  取值范圍(0-100)
+
+WT_SET_AUTO_BANDWIDTH_MODE	= 0  		//是否使用帶寬自動檢測模式來解析信號
+						//0:否，使用默認
+						//1:是
+						
+//WT_SET_FITTING_FLATNESS_EN      = 0           //是否打開Fitting Flatness(WT3XX生效)，默認不設置該參數   
+						//0:否，使用默認
+						//1:是
+
+WT_IQ_COMPENSATION		   = 0  	// 0 - off，1 - on						
+//WT_COMPENSATE_SAMPLING_CLOCK_ERROR = 0	// 0 - off，1 - on						
+
+					
+//WT_VSA_FREQ_OFFSET_MHZ_WIFI	   = 0		//VSA freq偏移，單位MHz	
+//WT_VSA_FREQ_OFFSET_MHZ_BT	   = 0		//VSA freq偏移，單位MHz		
+
+//WT_VSA_TRIG_PRETIME_US_WIFI	   = 0		//VSA trig前置時間，單位us
+//WT_VSA_TRIG_PRETIME_US_BT	   = 0		//VSA trig前置時間，單位us	
+
+//WT_VSA_TRIG_TIMEOUT_S_WIFI	   = 0		//VSA trig超時時間，單位sec
+//WT_VSA_TRIG_TIMEOUT_S_BT	   = 0		//VSA trig超時時間，單位sec			
+	
+//------------------------------------------------------------------------------
+// Mode 11A&11G Parameters 
+//------------------------------------------------------------------------------
+
+WT_EVM_PH_CORR_MODE 	= 2      	// 1 - Phase correction off.
+                             		// 2 - Symbol-by-symbol correction (Default value).
+                             		// 3 - Moving avg. correction 10 symbols
+                             		
+
+WT_EVM_11G_CH_ESTIMATE 	= 1      	// 1 - Raw Channel Estimate long train (Default value).
+                             		// 2 - 2nd Order Polyfit.
+                             		// 3 - Raw Channel Estimate full packet
+					
+WT_EVM_11A_CH_ESTIMATE 	= 1      	// 1 - Raw Channel Estimate long train (Default value).
+                             		// 2 - 2nd Order Polyfit.
+                             		// 3 - Raw Channel Estimate full packet                             		
+
+WT_EVM_SYM_TIM_CORR 	= 2      	// 1 - Symbol Timing Correction Off.
+                             		// 2 - Symbol Timing Correction On (Default value).
+
+					
+WT_EVM_FREQ_SYNC 	= 2         	// 1 - Short Training Symbol.
+                             		// 2 - Long Training Symbol (Default value).
+                             		// 3 - Full Data Packet.
+
+WT_EVM_AMPL_TRACK 	= 1	     	// 1 - Amplitude tracking off(Default value).
+                             		// 2 - Amplitude tracking on.
+
+WT_EQ_SMOOTHING_11G     = 0		// 0 - off
+					// 1 - on.
+
+WT_EQ_SMOOTHING_11A     = 0		// 0 - off
+					// 1 - on.
+					
+//------------------------------------------------------------------------------
+// Mode 11N Parameters 
+//------------------------------------------------------------------------------
+
+WT_EVM_2_4G_11N_CH_ESTIMATE 	= 1     // 1 - Raw Channel Estimate long train (Default value).
+                             		// 2 - 2nd Order Polyfit.
+                             		// 3 - Raw Channel Estimate full packet
+					
+WT_EVM_5G_11N_CH_ESTIMATE 	= 1     // 1 - Raw Channel Estimate long train (Default value).
+                             		// 2 - 2nd Order Polyfit.
+                             		// 3 - Raw Channel Estimate full packet 
+						
+WT_EVM_6G_11N_CH_ESTIMATE 	= 1     // 1 - Raw Channel Estimate long train (Default value).
+                             		// 2 - 2nd Order Polyfit.
+                             		// 3 - Raw Channel Estimate full packet 	
+
+WT_EQ_SMOOTHING_2_4G_11N     	= 0	// 0 - off
+					// 1 - on
+					
+WT_EQ_SMOOTHING_5G_11N     	= 0	// 0 - off
+					// 1 - on
+					
+WT_EQ_SMOOTHING_6G_11N     	= 0	// 0 - off
+					// 1 - on
+		
+//------------------------------------------------------------------------------
+// Mode 11B Parameters 
+//------------------------------------------------------------------------------
+WT_EVM_11B_EQUALIZER	= 1    		// 1 - Equalizer Off(Default value).
+                             		// 5 - 5 taps equalizer
+                                        // 7 - 7 taps equalizer
+                                        // 9 - 9 taps equalizer
+
+WT_EVM_11B_DC_REMOVAL 	= 0    		// 0 - DC removal Off(Default value).
+                             		// 1 - DC removal On.
+					
+WT_EVM_11B_PH_CORR_MODE = 2      	// 1 - Phase correction off.
+                             		// 2 - Symbol-by-symbol correction (Default value).
+			
+					
+//------------------------------------------------------------------------------
+// Mode ac/ax/be Parameters 
+//------------------------------------------------------------------------------
+WT_EVM_AC_CH_ESTIMATE 	= 3      	// 1 - Raw Channel Estimate long train.
+                             		// 2 - 2nd Order Polyfit.
+                             		// 3 - Raw Channel Estimate full packet(Default value).	
+
+WT_EVM_AX_CH_ESTIMATE 	= 3      	// 1 - Raw Channel Estimate long train.
+                             		// 2 - 2nd Order Polyfit.
+                             		// 3 - Raw Channel Estimate full packet(Default value).					
+					
+WT_EVM_BE_CH_ESTIMATE 	= 3      	// 1 - Raw Channel Estimate long train.
+                             		// 2 - 2nd Order Polyfit.
+                             		// 3 - Raw Channel Estimate full packet(Default value).							
+
+WT_EQ_SMOOTHING_AC	= 0		// 0 - off
+					// 1 - on
+					
+WT_EQ_SMOOTHING_AX	= 0		// 0 - off
+					// 1 - on
+					
+WT_EQ_SMOOTHING_BE	= 0		// 0 - off
+					// 1 - on
+
+//------------------------------------------------------------------------------
+// Tester SLE VSA Parameters Setting
+//------------------------------------------------------------------------------
+
+WT_SLE_VSA_F1_CONTROL_INFO_TYPE = 6	//SLE分析參數的控制信息類型, 配置值0~6對應A1~A7, 配置值7~11對應B1~B5
+WT_SLE_VSA_F1_SYNC_MODE		= 1	//SLE分析參數的同步模式，0：Standard，1：Access Code
+WT_SLE_VSA_F1_PID  		= 0	//SLE分析參數的邏輯鏈路標識，示例：0x12
+WT_SLE_VSA_F1_M_NUM	  	= 0	//SLE分析參數的M序列號
+WT_SLE_VSA_F1_ACCESS_CODE  	= 10100011011011010111000110111001	//SLE分析參數的接入碼， 示例：11110000111100001111000011110000
+WT_SLE_VSA_F1_CRC_TYPE  	= 1	//SLE分析參數的數據信息CRC類型
+WT_SLE_VSA_F1_CRC_SEED  	= 0x555555	//SLE分析參數的數據信息CRC生成種子
+WT_SLE_VSA_F1_PAYLOAD_MODE  	= 1	//SLE分析參數的payload分析模式
+WT_SLE_VSA_F1_PILOT_DENSITY  	= 0	//SLE分析參數的導頻插入密度
+WT_SLE_VSA_F1_SCRAMBLE  	= 0	//SLE分析參數的是否加擾
+WT_SLE_VSA_F1_CHANNEL_TYPE  	= 1	//SLE分析參數的信道類型
+WT_SLE_VSA_F1_FREQ_RANGE  	= 0	//SLE分析參數的工作頻段
+WT_SLE_VSA_F1_BROAD_INDEX  	= 0	//SLE分析參數的廣播索引
+WT_SLE_VSA_F1_SLOT_INDEX  	= 0	//SLE分析參數的基礎時隙序號
+WT_SLE_VSA_F1_RAISED_ROOT_COS  	= 0	//SLE分析參數的根升余弦濾波器
+
+//------------------------------------------------------------------------------
+
+WT_SLE_VSA_F2_CONTROL_INFO_TYPE = 5	//SLE分析參數的控制信息類型, 配置值0~6對應A1~A7, 配置值7~11對應B1~B5
+WT_SLE_VSA_F2_SYNC_MODE		= 1	//SLE分析參數的同步模式，0：Standard，1：Access Code
+WT_SLE_VSA_F2_PID  		= 0	//SLE分析參數的邏輯鏈路標識，示例：0x12
+WT_SLE_VSA_F2_M_NUM	  	= 0	//SLE分析參數的M序列號
+WT_SLE_VSA_F2_ACCESS_CODE  	= 1010001101101101011100011011100110111101001000110001010001010110	//SLE分析參數的接入碼， 示例：11110000111100001111000011110000
+WT_SLE_VSA_F2_CRC_TYPE  	= 1	//SLE分析參數的數據信息CRC類型
+WT_SLE_VSA_F2_CRC_SEED  	= 0x555555	//SLE分析參數的數據信息CRC生成種子
+WT_SLE_VSA_F2_PAYLOAD_MODE  	= 1	//SLE分析參數的payload分析模式
+WT_SLE_VSA_F2_PILOT_DENSITY  	= 16	//SLE分析參數的導頻插入密度
+WT_SLE_VSA_F2_SCRAMBLE  	= 0	//SLE分析參數的是否加擾
+WT_SLE_VSA_F2_CHANNEL_TYPE  	= 1	//SLE分析參數的信道類型
+WT_SLE_VSA_F2_FREQ_RANGE  	= 0	//SLE分析參數的工作頻段
+WT_SLE_VSA_F2_BROAD_INDEX  	= 0	//SLE分析參數的廣播索引
+WT_SLE_VSA_F2_SLOT_INDEX  	= 0	//SLE分析參數的基礎時隙序號
+WT_SLE_VSA_F2_RAISED_ROOT_COS  	= 1	//SLE分析參數的根升余弦濾波器
+
+//------------------------------------------------------------------------------
+// Tester VSA Sample Rate Mode Setting
+//------------------------------------------------------------------------------
+WT_VSA_SAMPLE_RATE_MODE	= 0		// 0 - Default 120M
+					// 1 - Auto Setting						
+							
+//------------------------------------------------------------------------------
+//WT160 Tester TrigerPower&RxPowMargin Setting
+//------------------------------------------------------------------------------
+WT_160_TRIGER_POWER 	     = -28      // Trigger Level,For WT160
+WT_160_RX_POWER_MARGIN       = 15  	// Power Margin,For WT160
+			
+//------------------------------------------------------------------------------
+//WT2XX&WT3XX Tester TrigerPower&RxPowMargin Setting
+//------------------------------------------------------------------------------
+WT_TRIGGER_POWER_11B 	     = -31 	// Trigger Level,For 11B
+WT_RX_POWER_MARGIN_11B       = 11   	// Power Margin,For 11B
+
+WT_TRIGGER_POWER_OFDM 	     = -34 	// Trigger Level,For OFDM
+WT_RX_POWER_MARGIN_OFDM      = 12  	// Power Margin,For OFDM
+
+WT_TRIGGER_POWER_ZIGBEE_BT   = -31 	// Trigger Level,For ZIGBEE and BT
+WT_RX_POWER_MARGIN_ZIGBEE_BT = 8    	// Power Margin,For ZIGBEE and BT
+
+					
+//******************************************************************************
+//                              END OF FILE
+//******************************************************************************

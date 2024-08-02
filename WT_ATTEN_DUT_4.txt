@@ -1,0 +1,239 @@
+//******************************************************************************
+//                         Attenation  Setup file
+//******************************************************************************
+
+
+//------------------------------------------------------------------------------
+// Fixed attenation 
+//
+//------------------------------------------------------------------------------
+WT_FIXED_ATTEN_2_4_CHAIN0  	=  0.0
+WT_FIXED_ATTEN_2_4_CHAIN1  	=  0.0
+WT_FIXED_ATTEN_2_4_CHAIN2  	=  0.0
+WT_FIXED_ATTEN_2_4_CHAIN3  	=  0.0
+WT_FIXED_ATTEN_2_4_CHAIN4  	=  0
+WT_FIXED_ATTEN_2_4_CHAIN5  	=  0
+WT_FIXED_ATTEN_2_4_CHAIN6  	=  0
+WT_FIXED_ATTEN_2_4_CHAIN7  	=  0
+
+WT_FIXED_ATTEN_5_CHAIN0  	=  0.0
+WT_FIXED_ATTEN_5_CHAIN1  	=  0.0
+WT_FIXED_ATTEN_5_CHAIN2  	=  0.0
+WT_FIXED_ATTEN_5_CHAIN3  	=  0.0
+WT_FIXED_ATTEN_5_CHAIN4  	=  0
+WT_FIXED_ATTEN_5_CHAIN5  	=  0
+WT_FIXED_ATTEN_5_CHAIN6  	=  0
+WT_FIXED_ATTEN_5_CHAIN7  	=  0
+
+WT_FIXED_ATTEN_6_CHAIN0  	=  0.0
+WT_FIXED_ATTEN_6_CHAIN1  	=  0.0
+WT_FIXED_ATTEN_6_CHAIN2  	=  0.0
+WT_FIXED_ATTEN_6_CHAIN3  	=  6.0
+WT_FIXED_ATTEN_6_CHAIN4  	=  0
+WT_FIXED_ATTEN_6_CHAIN5  	=  0
+WT_FIXED_ATTEN_6_CHAIN6  	=  0
+WT_FIXED_ATTEN_6_CHAIN7  	=  0
+
+WT_FIXED_ATTEN_BT	        =  0 		//CHAIN0
+WT_FIXED_ATTEN_BT_CHAIN1        =  0		//CHAIN1
+
+WT_FIXED_ATTEN_ZIGBEE          	=  0
+
+WT_FIXED_ATTEN_GPS          	=  0
+WT_FIXED_ATTEN_BDS          	=  0
+
+WT_FIXED_ATTEN_SLE_CHAIN0	=  0 		//CHAIN0
+//------------------------------------------------------------------------------
+// Delta attenation
+//
+//------------------------------------------------------------------------------
+//  Write delta attnation into the table,dB 
+//Ch  CHAIN0  CHAIN1
+WT_DELTA_ATTEN_2_4_BEGIN
+
+CH1     18.4		18.5		18.5    		18.4		0		0		0    		0    	// 2412 MHz
+CH14    18.5		18.7		18.5    		18.4		0		0		0    		0    	// 2484 MHz
+
+WT_DELTA_ATTEN_2_4_END
+
+
+
+
+WT_DELTA_ATTEN_5_BEGIN
+
+CH8     20.1		20.9 		20.5		20.2		0		0		0    		0	// 5040 MHz
+CH36    19.8		20.7		20.2		20.0		0		0		0    		0	// 5180 MHz
+CH100   20.2		21.2       	20.6		20.3		0		0		0    		0	// 5500 MHz
+CH136   20.4		21.3       	20.6		20.5		0		0		0    		0	// 5680 MHz
+CH171   20.5		21.1       	21.1		20.8		0		0		0    		0	// 5855 MHz
+CH181   20.9		21.3       	21.3		21.2		0		0		0    		0	// 5905 MHz
+CH184   20.5		21.0       	20.8		20.6		0		0		0    		0	// 4920 MHz
+CH196   20.2		20.9       	20.6		20.4		0		0		0    		0	// 4980 MHz
+
+WT_DELTA_ATTEN_5_END
+
+
+WT_DELTA_ATTEN_6_BEGIN
+
+CH1     20.8		21.2		21.2    		21.1 		0		0		0    		0	// 5955 MHz
+CH31    20.7		21.4		21.1    		20.7 		0		0		0    		0	// 6105 MHz
+CH111   20.9		21.6		21.2    		21.0 		0		0		0    		0	// 6505 MHz
+CH191   21.2		21.1		21.4    		21.5 		0		0		0    		0	// 6905 MHz
+CH233   21.8		23.0		22.5    		21.9 		0		0		0    		0	// 7115 MHz
+
+
+WT_DELTA_ATTEN_6_END
+
+
+
+WT_DELTA_ATTEN_BT_BEGIN
+BT_CH0  	        0	0	// 2402 MHz
+BT_CH1  	        0	0	// 2403 MHz
+BT_CH2  	        0    	0	// 2404 MHz
+BT_CH3  	        0    	0	// 2405 MHz
+BT_CH4  	        0    	0	// 2406 MHz
+BT_CH5  	        0    	0	// 2407 MHz
+BT_CH6  	        0    	0	// 2408 MHz
+BT_CH7  	        0    	0	// 2409 MHz
+BT_CH8  	        0    	0	// 2410 MHz
+BT_CH9  	        0    	0	// 2411 MHz
+BT_CH10 	        0    	0	// 2412 MHz
+BT_CH11 	        0    	0	// 2413 MHz
+BT_CH12 	        0    	0	// 2414 MHz
+BT_CH13 	        0    	0	// 2415 MHz
+BT_CH14 	        0    	0	// 2416 MHz
+BT_CH15 	        0	0	// 2417 MHz
+BT_CH16 	        0    	0	// 2418 MHz
+BT_CH17 	        0    	0	// 2419 MHz
+BT_CH18 	        0    	0	// 2420 MHz
+BT_CH19 	        0    	0	// 2421 MHz
+BT_CH20 	        0    	0	// 2422 MHz
+BT_CH21 	        0    	0	// 2423 MHz
+BT_CH22 	        0    	0	// 2424 MHz
+BT_CH23 	        0    	0	// 2425 MHz
+BT_CH24 	        0    	0	// 2426 MHz
+BT_CH25 	        0    	0	// 2427 MHz
+BT_CH26 	        0    	0	// 2428 MHz
+BT_CH27 	        0    	0	// 2429 MHz
+BT_CH28 	        0    	0	// 2430 MHz
+BT_CH29 	        0	0	// 2431 MHz
+BT_CH30 	        0    	0	// 2432 MHz
+BT_CH31 	        0    	0	// 2433 MHz
+BT_CH32 	        0    	0	// 2434 MHz
+BT_CH33 	        0    	0	// 2435 MHz
+BT_CH34 	        0    	0	// 2436 MHz
+BT_CH35 	        0    	0	// 2437 MHz
+BT_CH36 	        0    	0	// 2438 MHz
+BT_CH37 	        0    	0	// 2439 MHz
+BT_CH38 	        0    	0	// 2440 MHz
+BT_CH39 	        0    	0	// 2441 MHz
+BT_CH40 	        0    	0	// 2442 MHz
+BT_CH41 	        0    	0	// 2443 MHz
+BT_CH42 	        0    	0	// 2444 MHz
+BT_CH43 	        0	0	// 2445 MHz
+BT_CH44 	        0    	0	// 2446 MHz
+BT_CH45 	        0    	0	// 2447 MHz
+BT_CH46 	        0    	0	// 2448 MHz
+BT_CH47 	        0    	0	// 2449 MHz
+BT_CH48 	        0    	0	// 2450 MHz
+BT_CH49 	        0    	0	// 2451 MHz
+BT_CH50 	        0    	0	// 2452 MHz
+BT_CH51 	        0    	0	// 2453 MHz
+BT_CH52 	        0    	0	// 2454 MHz
+BT_CH53 	        0    	0	// 2455 MHz
+BT_CH54 	        0    	0	// 2456 MHz
+BT_CH55 	        0    	0	// 2457 MHz
+BT_CH56 	        0    	0	// 2458 MHz
+BT_CH57 	        0    	0	// 2459 MHz
+BT_CH58 	        0    	0	// 2460 MHz
+BT_CH59 	        0    	0	// 2461 MHz
+BT_CH60 	        0    	0	// 2462 MHz
+BT_CH61 	        0    	0	// 2463 MHz
+BT_CH62 	        0    	0	// 2464 MHz
+BT_CH63 	        0	0	// 2465 MHz
+BT_CH64 	        0    	0	// 2466 MHz
+BT_CH65 	        0    	0	// 2467 MHz
+BT_CH66 	        0    	0	// 2468 MHz
+BT_CH67 	        0    	0	// 2469 MHz
+BT_CH68 	        0    	0	// 2470 MHz
+BT_CH69 	        0    	0	// 2471 MHz
+BT_CH70 	        0    	0	// 2472 MHz
+BT_CH71 	        0    	0	// 2473 MHz
+BT_CH72 	        0    	0	// 2474 MHz
+BT_CH73 	        0    	0	// 2475 MHz
+BT_CH74 	        0    	0	// 2476 MHz
+BT_CH75 	        0    	0	// 2477 MHz
+BT_CH76 	        0    	0	// 2478 MHz
+BT_CH77 	        0    	0	// 2479 MHz
+BT_CH78 	        0    	0	// 2480 MHz
+WT_DELTA_ATTEN_BT_END
+
+
+WT_DELTA_ATTEN_ZIGBEE_BEGIN
+ZIGBEE_CH11             0   	// 2405 MHz
+ZIGBEE_CH12             0  	// 2410 MHz
+ZIGBEE_CH13             0  	// 2415 MHz
+ZIGBEE_CH14             0   	// 2420 MHz
+ZIGBEE_CH15             0	// 2425 MHz
+ZIGBEE_CH16             0   	// 2430 MHz
+ZIGBEE_CH17             0   	// 2435 MHz
+ZIGBEE_CH18             0   	// 2440 MHz
+ZIGBEE_CH19             0   	// 2445 MHz
+ZIGBEE_CH20             0   	// 2450 MHz
+ZIGBEE_CH21             0   	// 2455 MHz
+ZIGBEE_CH22             0   	// 2460 MHz
+ZIGBEE_CH23             0   	// 2465 MHz
+ZIGBEE_CH24             0   	// 2470 MHz
+ZIGBEE_CH25             0   	// 2475 MHz
+ZIGBEE_CH26             0   	// 2480 MHz
+WT_DELTA_ATTEN_ZIGBEE_END
+
+
+WT_DELTA_ATTEN_SLE_BEGIN
+SLE_CH0  	        0	0	// 2402 MHz
+SLE_CH3  	        0	0	// 2405 MHz
+SLE_CH7  	        0	0	// 2409 MHz
+SLE_CH10 	        0    	0	// 2412 MHz
+SLE_CH20 	        0    	0	// 2422 MHz
+SLE_CH22 	        0    	0	// 2424 MHz
+SLE_CH24 	        0    	0	// 2426 MHz
+SLE_CH38 	        0    	0	// 2440 MHz
+SLE_CH50 	        0    	0	// 2452 MHz
+SLE_CH58 	        0    	0	// 2460 MHz
+SLE_CH75 	        0    	0	// 2477 MHz
+SLE_CH76 	        0    	0	// 2478 MHz
+SLE_CH78 	        0    	0	// 2480 MHz
+SLE_CH79 	        0    	0	// 5125 MHz
+SLE_CH80 	        0    	0	// 5153 MHz
+SLE_CH82 	        0    	0	// 5155 MHz
+SLE_CH85 	        0    	0	// 5158 MHz
+SLE_CH94 	        0    	0	// 5167 MHz
+SLE_CH96 	        0    	0	// 5169 MHz
+SLE_CH98 	        0    	0	// 5171 MHz
+SLE_CH149 	        0    	0	// 5222 MHz
+SLE_CH176 	        0    	0	// 5249 MHz
+SLE_CH227 	        0	0	// 5300 MHz
+SLE_CH253 	        0	0	// 5326 MHz
+SLE_CH273 	        0    	0	// 5346 MHz
+SLE_CH274 	        0    	0	// 5347 MHz
+SLE_CH275 	        0    	0	// 5348 MHz
+SLE_CH276 	        0    	0	// 5727 MHz
+SLE_CH278 	        0    	0	// 5729 MHz
+SLE_CH280 	        0    	0	// 5731 MHz
+SLE_CH281 	        0    	0	// 5732 MHz
+SLE_CH290 	        0    	0	// 5741 MHz
+SLE_CH301 	        0    	0	// 5752 MHz
+SLE_CH309 	        0    	0	// 5760 MHz
+SLE_CH349 	        0    	0	// 5800 MHz
+SLE_CH350 	        0    	0	// 5801 MHz
+SLE_CH364 	        0    	0	// 5815 MHz
+SLE_CH384 	        0    	0	// 5835 MHz
+SLE_CH395 	        0    	0	// 5846 MHz
+SLE_CH396 	        0    	0	// 5847 MHz
+SLE_CH397 	        0    	0	// 5848 MHz
+
+WT_DELTA_ATTEN_SLE_END
+
+//------------------------------------------------------------------------------
+// END of file
+//------------------------------------------------------------------------------
